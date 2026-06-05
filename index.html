@@ -6,108 +6,107 @@
 <title>Manager Dashboard</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',sans-serif}
-html,body{background:#f3f2f0;min-height:100vh}
-.bar{background:#0f3460;height:44px;display:flex;align-items:center;padding:0 20px;gap:12px;position:sticky;top:0;z-index:30}
-.bar-logo{color:#fff;font-weight:600;font-size:14px}
-.bar-sep{color:rgba(255,255,255,.3)}
-.bar-crumb{color:rgba(255,255,255,.6);font-size:13px}
-.page{max-width:900px;margin:0 auto;padding:20px;display:flex;flex-direction:column;gap:14px}
-.updated{font-size:11px;color:#9e9c93}
+html,body{background:#f7fafc;min-height:100vh}
+
+/* Metrics */
+.page{max-width:960px;margin:0 auto;padding:20px;display:flex;flex-direction:column;gap:16px}
+.updated{font-size:11px;color:#718096;text-align:right}
 .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.metric{background:#fff;border:1px solid #e5e3dc;border-radius:8px;padding:18px 20px}
-.metric-label{font-size:11px;color:#9e9c93;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
-.metric-num{font-size:36px;font-weight:300;line-height:1}
-.metric-num.red{color:#c0392b}.metric-num.amber{color:#b45309}.metric-num.navy{color:#0f3460}.metric-num.green{color:#166534}
-.metric-sub{font-size:11px;color:#9e9c93;margin-top:6px}
-.section{background:#fff;border:1px solid #e5e3dc;border-radius:8px;overflow:hidden}
-.sec-head{padding:12px 16px;background:#faf9f7;border-bottom:1px solid #f0efe9;display:flex;justify-content:space-between;align-items:center}
-.sec-title{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#1a1a18}
-.sec-count{font-size:11px;color:#9e9c93}
+.metric{background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:18px 20px;}
+.metric-label{font-size:11px;color:#718096;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;font-weight:600}
+.metric-num{font-size:38px;font-weight:300;line-height:1;color:#1a202c}
+.metric-num.red{color:#c0392b}.metric-num.amber{color:#b45309}.metric-num.teal{color:#1a7a6e}.metric-num.green{color:#166534}
+.metric-sub{font-size:11px;color:#718096;margin-top:6px}
+
+/* Section cards */
+.section{background:#fff;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden}
+.sec-head{padding:12px 18px;border-bottom:1px solid #edf2f7;display:flex;justify-content:space-between;align-items:center;background:#f8fffe}
+.sec-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#0d4a42}
+.sec-count{font-size:11px;color:#718096}
+
+/* Tables */
 table{width:100%;border-collapse:collapse}
-th{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#9e9c93;padding:7px 14px;text-align:left;border-bottom:1px solid #f0efe9;background:#faf9f7}
-td{padding:10px 14px;border-bottom:1px solid #f7f6f3;font-size:13px;color:#1a1a18;vertical-align:middle}
+th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#718096;padding:8px 16px;text-align:left;border-bottom:1px solid #edf2f7;background:#f8fffe}
+td{padding:11px 16px;border-bottom:1px solid #f7fafc;font-size:13px;color:#1a202c;vertical-align:middle}
 tr:last-child td{border-bottom:none}
-tr:hover td{background:#faf9f7}
+tr:hover td{background:#f0faf8}
 .name{font-weight:500}
-.badge{display:inline-flex;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:600}
+
+/* Badges */
+.badge{display:inline-flex;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;align-items:center}
 .b-red{background:#fdecea;color:#c0392b;border:1px solid #f5c6c0}
 .b-orange{background:#fef3ec;color:#d35400;border:1px solid #f5c9a0}
-.b-neutral{background:#f0f4f8;color:#4a6580;border:1px solid #c5d5e8}
-.b-green{background:#f0faf4;color:#166534;border:1px solid #a7d9b8}
-.b-blue{background:#eef4fb;color:#1e3a5f;border:1px solid #b5cfe8}
-.b-amber{background:#fef9ee;color:#b45309;border:1px solid #f5dfa0}
-.b-gray{background:#f3f2f0;color:#6b6960;border:1px solid #e0ded8}
-.btn{font-size:12px;padding:5px 14px;border:1px solid #d8d6ce;border-radius:5px;cursor:pointer;background:#fff;color:#444;font-family:inherit}
-.btn:hover{background:#f3f2f0}
-.legend{display:flex;gap:12px;padding:8px 14px;border-top:1px solid #f0efe9;font-size:11px;color:#6b6960;background:#faf9f7}
+.b-neutral{background:#edf2f7;color:#4a5568;border:1px solid #cbd5e0}
+.b-green{background:#f0fff4;color:#276749;border:1px solid #9ae6b4}
+.b-teal{background:#e6fffa;color:#0d4a42;border:1px solid #81e6d9}
+.b-blue{background:#ebf8ff;color:#2b6cb0;border:1px solid #90cdf4}
+.b-amber{background:#fffbeb;color:#92400e;border:1px solid #fcd34d}
+.b-gray{background:#f7fafc;color:#4a5568;border:1px solid #e2e8f0}
+
+/* Buttons */
+.btn{font-size:12px;padding:6px 14px;border:1.5px solid #1a7a6e;border-radius:6px;cursor:pointer;background:#fff;color:#1a7a6e;font-family:inherit;font-weight:500;transition:all .15s}
+.btn:hover{background:#1a7a6e;color:#fff}
+
+/* Legend */
+.legend{display:flex;gap:14px;padding:9px 16px;border-top:1px solid #edf2f7;font-size:11px;color:#718096;background:#f8fffe}
 .legend-item{display:flex;align-items:center;gap:6px}
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.pip{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#fff;flex-shrink:0}
-.c-row{display:flex;align-items:flex-start;padding:10px 14px;border-bottom:1px solid #f7f6f3;gap:10px}
+
+/* Two col */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* Score pip */
+.pip{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+
+/* Be supported rows */
+.c-row{display:flex;align-items:flex-start;padding:11px 16px;border-bottom:1px solid #f7fafc;gap:12px}
 .c-row:last-child{border-bottom:none}
-.comment{font-size:11px;color:#6b6960;font-style:italic;margin-top:2px}
-.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:14px 16px;border-bottom:1px solid #f0efe9}
+.comment{font-size:11px;color:#718096;font-style:italic;margin-top:3px}
+
+/* Score grid */
+.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:16px;border-bottom:1px solid #edf2f7}
 .score-box{text-align:center}
-.score-num{font-size:24px;font-weight:300}
-.score-label{font-size:11px;color:#9e9c93;margin-top:4px;line-height:1.4}
-.change-row{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-bottom:1px solid #f7f6f3;font-size:12px}
+.score-num{font-size:26px;font-weight:300}
+.score-label{font-size:11px;color:#718096;margin-top:4px;line-height:1.4}
+
+/* Changes */
+.sub-head{padding:8px 16px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#718096;border-bottom:1px solid #edf2f7;background:#f8fffe}
+.change-row{display:flex;align-items:center;justify-content:space-between;padding:9px 16px;border-bottom:1px solid #f7fafc;font-size:12px}
 .change-row:last-child{border-bottom:none}
-.change-up{color:#166534;font-weight:600}
-.change-down{color:#c0392b;font-weight:600}
-.sub-head{padding:8px 14px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#9e9c93;border-bottom:1px solid #f0efe9;background:#faf9f7}
-.log-history{background:#f9f8f6;border-top:1px solid #f0efe9;padding:10px 14px}
-.log-entry{padding:5px 0;border-bottom:1px solid #f0efe9;display:flex;gap:10px;font-size:12px}
+.change-up{color:#276749;font-weight:700}
+.change-down{color:#c0392b;font-weight:700}
+
+/* LT History */
+.log-history{background:#f8fffe;border-top:1px solid #edf2f7;padding:10px 16px}
+.log-entry{padding:5px 0;border-bottom:1px solid #edf2f7;display:flex;gap:10px;font-size:12px}
 .log-entry:last-child{border-bottom:none}
-.log-date{color:#9e9c93;white-space:nowrap;min-width:78px;font-size:11px}
+.log-date{color:#718096;white-space:nowrap;min-width:78px;font-size:11px}
+
 /* Modal */
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:50;align-items:center;justify-content:center}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:50;align-items:center;justify-content:center}
 .overlay.open{display:flex}
-.modal{background:#fff;border-radius:10px;width:420px;max-width:94vw;box-shadow:0 8px 32px rgba(0,0,0,.18);overflow:hidden}
-.modal-head{background:#0f3460;padding:16px 20px}
-.modal-head-title{color:#fff;font-size:15px;font-weight:600}
-.modal-head-sub{color:rgba(255,255,255,.6);font-size:12px;margin-top:2px}
-.modal-body{padding:20px}
-.fl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:#9e9c93;display:block;margin-bottom:5px}
+.modal{background:#fff;border-radius:12px;width:440px;max-width:94vw;box-shadow:0 20px 60px rgba(0,0,0,.2);overflow:hidden}
+.modal-head{background:#0d4a42;padding:18px 22px}
+.modal-head-title{color:#fff;font-size:16px;font-weight:600}
+.modal-head-sub{color:rgba(255,255,255,.6);font-size:12px;margin-top:3px}
+.modal-body{padding:22px}
+.fl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#718096;display:block;margin-bottom:5px}
 .fg{margin-bottom:14px}
-select,textarea,input[type=text],input[type=date],input[type=file]{width:100%;font-size:13px;font-family:inherit;padding:8px 10px;border:1px solid #d8d6ce;border-radius:5px;background:#fff;color:#1a1a18;outline:none}
-input[type=file]{padding:6px 10px;cursor:pointer}
+select,textarea,input[type=date],input[type=file]{width:100%;font-size:13px;font-family:inherit;padding:9px 12px;border:1.5px solid #e2e8f0;border-radius:7px;background:#fff;color:#1a202c;outline:none}
+select:focus,textarea:focus,input:focus{border-color:#1a7a6e}
 textarea{resize:none;height:64px}
-.modal-foot{padding:14px 20px;border-top:1px solid #f0efe9;display:flex;gap:8px;justify-content:flex-end}
-.btn-cancel{padding:7px 16px;border:1px solid #d8d6ce;border-radius:5px;background:#fff;font-size:13px;font-family:inherit;cursor:pointer}
-.btn-save{padding:7px 16px;border:none;border-radius:5px;background:#0f3460;color:#fff;font-size:13px;font-family:inherit;cursor:pointer}
-.pa-note{background:#eef4fb;border:1px solid #b5cfe8;border-radius:6px;padding:10px 12px;font-size:12px;color:#1e3a5f;margin-bottom:14px;line-height:1.5}
+input[type=file]{padding:7px 12px;cursor:pointer}
+.modal-foot{padding:16px 22px;border-top:1px solid #edf2f7;display:flex;gap:10px;justify-content:flex-end}
+.btn-cancel{padding:8px 18px;border:1.5px solid #e2e8f0;border-radius:7px;background:#fff;font-size:13px;font-family:inherit;cursor:pointer;color:#4a5568}
+.btn-save{padding:8px 18px;border:none;border-radius:7px;background:#1a7a6e;color:#fff;font-size:13px;font-family:inherit;cursor:pointer;font-weight:500}
+.btn-save:hover{background:#0d4a42}
+.pa-note{background:#e6fffa;border:1px solid #81e6d9;border-radius:7px;padding:10px 14px;font-size:12px;color:#0d4a42;margin-bottom:16px;line-height:1.5}
 </style>
 </head>
 <body>
 
-<div class="bar">
-  <span class="bar-logo">People Hub</span>
-  <span class="bar-sep">/</span>
-  <span class="bar-crumb" id="bar-branch">Loading...</span>
-</div>
-
 <div class="page">
 
-  <div class="updated" id="updated-text">Last updated —</div>
-
-  <!-- Metrics -->
-  <div class="metrics">
-    <div class="metric">
-      <div class="metric-label">Absence triggers</div>
-      <div class="metric-num red" id="m-triggers">—</div>
-      <div class="metric-sub">Meetings outstanding →</div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Long-term absence</div>
-      <div class="metric-num amber" id="m-lt">—</div>
-      <div class="metric-sub">Currently on hold →</div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Be Supported avg</div>
-      <div class="metric-num navy" id="m-bs">—</div>
-      <div class="metric-sub">Latest period · out of 5</div>
-    </div>
-  </div>
+  <div class="updated" id="updated-text"></div>
 
   <!-- Absence triggers -->
   <div class="section">
@@ -122,7 +121,7 @@ textarea{resize:none;height:64px}
         <th style="width:22%">Period</th>
         <th style="width:29%">Action</th>
       </tr></thead>
-      <tbody id="abs-tbody"><tr><td colspan="4" style="padding:20px;text-align:center;color:#9e9c93;font-size:12px">Loading...</td></tr></tbody>
+      <tbody id="abs-tbody"><tr><td colspan="4" style="padding:20px;text-align:center;color:#718096;font-size:12px">Loading...</td></tr></tbody>
     </table>
     <div class="legend">
       <div class="legend-item"><span class="badge b-red">4+</span> High concern</div>
@@ -137,20 +136,19 @@ textarea{resize:none;height:64px}
       <span class="sec-title">Long-term absence</span>
       <span class="sec-count" id="lt-count">Loading...</span>
     </div>
-    <div id="lt-body"><div style="padding:20px;text-align:center;color:#9e9c93;font-size:12px">Loading...</div></div>
+    <div id="lt-body"><div style="padding:20px;text-align:center;color:#718096;font-size:12px">Loading...</div></div>
   </div>
 
-  <!-- Be Supported side by side -->
+  <!-- Be Supported -->
   <div class="two-col">
-
     <div class="section">
       <div class="sec-head">
         <span class="sec-title">Be Supported</span>
         <span class="sec-count">Scores needing attention</span>
       </div>
-      <div class="score-grid" id="bs-scores">
-        <div class="score-box"><div class="score-num" style="color:#166534" id="bs-5">—</div><div class="score-label">Score 5<br>Very happy</div></div>
-        <div class="score-box"><div class="score-num" style="color:#4a9c6f" id="bs-4">—</div><div class="score-label">Score 4<br>Happy</div></div>
+      <div class="score-grid">
+        <div class="score-box"><div class="score-num" style="color:#276749" id="bs-5">—</div><div class="score-label">Score 5<br>Very happy</div></div>
+        <div class="score-box"><div class="score-num" style="color:#1a7a6e" id="bs-4">—</div><div class="score-label">Score 4<br>Happy</div></div>
         <div class="score-box"><div class="score-num" style="color:#b45309" id="bs-3">—</div><div class="score-label">Score 3<br>Okay</div></div>
         <div class="score-box"><div class="score-num" style="color:#c0392b" id="bs-12">—</div><div class="score-label">Score 1–2<br>Unhappy</div></div>
       </div>
@@ -167,8 +165,8 @@ textarea{resize:none;height:64px}
       <div class="sub-head">▲ Increased</div>
       <div id="bs-up"></div>
     </div>
-
   </div>
+
 </div>
 
 <!-- Absence Modal -->
@@ -233,233 +231,179 @@ textarea{resize:none;height:64px}
 </div>
 
 <script>
-// ── Config from URL params ────────────────────────────────────────
-const params  = new URLSearchParams(window.location.search);
-const BRANCH  = params.get('branch') || '';
-const SP_SITE = params.get('site')   || '';
+const params   = new URLSearchParams(window.location.search);
+const BRANCH   = params.get('branch') || '';
+const SP_SITE  = params.get('site')   || '';
 const ABS_LIST = 'Short Term Absence';
 const LT_LIST  = 'Long Term Absence';
 const BS_LIST  = 'Be Supported';
 
-document.getElementById('bar-branch').textContent  = BRANCH || 'Dashboard';
-document.getElementById('updated-text').textContent = 'Last updated ' + new Date().toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'});
+document.getElementById('updated-text').textContent = BRANCH + ' · Last updated ' + new Date().toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
 document.getElementById('abs-date').value = new Date().toISOString().split('T')[0];
 document.getElementById('lt-date').value  = new Date().toISOString().split('T')[0];
 
-// ── State ─────────────────────────────────────────────────────────
-let absData = [], ltData = [], bsData = [], ltLogs = {};
-let currentAbsID = null, currentLTKey = '';
-try{ ltLogs = JSON.parse(localStorage.getItem(BRANCH+'_ltlogs')||'{}'); }catch(e){}
-function persist(){ try{ localStorage.setItem(BRANCH+'_ltlogs', JSON.stringify(ltLogs)); }catch(e){} }
+let absData=[], ltData=[], bsData=[], ltLogs={};
+let currentAbsID=null, currentLTKey='';
+try{ ltLogs=JSON.parse(localStorage.getItem(BRANCH+'_ltlogs')||'{}'); }catch(e){}
+function persist(){ try{ localStorage.setItem(BRANCH+'_ltlogs',JSON.stringify(ltLogs)); }catch(e){} }
 
-// ── SharePoint fetch ──────────────────────────────────────────────
-async function spFetch(list, filter, select){
+async function spFetch(list,filter,select){
   if(!SP_SITE) return null;
   try{
-    let url = `${SP_SITE}/_api/web/lists/getbytitle('${list}')/items?$top=500`;
-    if(filter) url += `&$filter=${filter}`;
-    if(select) url += `&$select=${select}`;
-    const res = await fetch(url, {headers:{'Accept':'application/json;odata=verbose'}});
+    let url=`${SP_SITE}/_api/web/lists/getbytitle('${list}')/items?$top=500`;
+    if(filter) url+=`&$filter=${filter}`;
+    if(select) url+=`&$select=${select}`;
+    const res=await fetch(url,{headers:{'Accept':'application/json;odata=verbose'}});
     if(!res.ok) throw new Error();
-    const d = await res.json();
-    return d.d.results;
+    return (await res.json()).d.results;
   }catch(e){ return null; }
 }
 
-async function spUpdate(list, id, body){
+async function spUpdate(list,id,body){
   if(!SP_SITE) return;
   try{
-    const dr = await fetch(`${SP_SITE}/_api/contextinfo`,{method:'POST',headers:{'Accept':'application/json;odata=verbose'}});
-    const dd = await dr.json();
-    const digest = dd.d.GetContextWebInformation.FormDigestValue;
+    const dr=await fetch(`${SP_SITE}/_api/contextinfo`,{method:'POST',headers:{'Accept':'application/json;odata=verbose'}});
+    const digest=(await dr.json()).d.GetContextWebInformation.FormDigestValue;
     await fetch(`${SP_SITE}/_api/web/lists/getbytitle('${list}')/items(${id})`,{
       method:'PATCH',
       headers:{'Accept':'application/json;odata=verbose','Content-Type':'application/json;odata=verbose','X-RequestDigest':digest,'IF-MATCH':'*','X-HTTP-Method':'MERGE'},
-      body: JSON.stringify(body)
+      body:JSON.stringify(body)
     });
   }catch(e){}
 }
 
-// ── Render helpers ────────────────────────────────────────────────
 function epsBadge(n){
   if(n>=4) return`<span class="badge b-red">${n}</span>`;
   if(n===3) return`<span class="badge b-orange">${n}</span>`;
   return`<span class="badge b-neutral">${n}</span>`;
 }
 
-// ── Absence ───────────────────────────────────────────────────────
 function renderAbs(){
   if(!absData.length){
-    document.getElementById('abs-tbody').innerHTML='<tr><td colspan="4" style="padding:20px;text-align:center;color:#9e9c93;font-size:12px">No absence data for this branch.</td></tr>';
+    document.getElementById('abs-tbody').innerHTML='<tr><td colspan="4" style="padding:20px;text-align:center;color:#718096;font-size:12px">No absence data for this branch.</td></tr>';
     document.getElementById('abs-count').textContent='0 employees';
     document.getElementById('m-triggers').textContent='✓';
     document.getElementById('m-triggers').className='metric-num green';
     return;
   }
-  document.getElementById('abs-tbody').innerHTML = absData.map(r=>{
-    const done = r.Meeting_x0020_held || r.Outcome;
-    const triggered = r.Absences >= 3;
+  document.getElementById('abs-tbody').innerHTML=absData.map(r=>{
+    const done=r.Meeting_x0020_held||r.Outcome;
+    const triggered=r.Absences>=3;
     return`<tr>
       <td><span class="name">${r.Title}</span></td>
       <td>${epsBadge(r.Absences)}</td>
-      <td style="font-size:11px;color:#9e9c93;font-style:italic">${r.Period||''}</td>
+      <td style="font-size:11px;color:#718096;font-style:italic">${r.Period||''}</td>
       <td>${done
         ?`<span class="badge b-green">✓ ${(r.Outcome||'').split(' ').slice(0,2).join(' ')}</span>`
-        : triggered
+        :triggered
           ?`<button class="btn" onclick="openAbsModal('${r.Title.replace(/'/g,"\\'")}',${r.Id})">Log outcome</button>`
-          :`<span style="font-size:11px;color:#6b6960">Monitor</span>`
+          :`<span style="font-size:11px;color:#718096">Monitor</span>`
       }</td>
     </tr>`;
   }).join('');
-  const triggered = absData.filter(r=>r.Absences>=3);
-  const out = triggered.filter(r=>!r.Meeting_x0020_held&&!r.Outcome).length;
-  const monitoring = absData.filter(r=>r.Absences===2).length;
-  document.getElementById('abs-count').textContent=`${triggered.length} triggered · ${monitoring} to monitor · ${out} outstanding`;
-  document.getElementById('m-triggers').textContent = out > 0 ? out : '✓';
-  document.getElementById('m-triggers').className = 'metric-num ' + (out>0?'red':'green');
+  const triggered=absData.filter(r=>r.Absences>=3);
+  const out=triggered.filter(r=>!r.Meeting_x0020_held&&!r.Outcome).length;
+  const mon=absData.filter(r=>r.Absences===2).length;
+  document.getElementById('abs-count').textContent=`${triggered.length} triggered · ${mon} to monitor · ${out} outstanding`;
+  document.getElementById('m-triggers').textContent=out>0?out:'✓';
+  document.getElementById('m-triggers').className='metric-num '+(out>0?'red':'green');
 }
 
-// ── Long term ─────────────────────────────────────────────────────
 function renderLT(){
-  document.getElementById('lt-count').textContent = ltData.length + ' employee' + (ltData.length!==1?'s':'');
-  document.getElementById('m-lt').textContent = ltData.length || '0';
+  document.getElementById('lt-count').textContent=ltData.length+' employee'+(ltData.length!==1?'s':'');
+  document.getElementById('m-lt').textContent=ltData.length||'0';
   if(!ltData.length){
-    document.getElementById('lt-body').innerHTML='<div style="padding:20px;text-align:center;color:#9e9c93;font-size:12px">No long-term absence cases.</div>';
+    document.getElementById('lt-body').innerHTML='<div style="padding:20px;text-align:center;color:#718096;font-size:12px">No long-term absence cases.</div>';
     return;
   }
-  document.getElementById('lt-body').innerHTML = ltData.map(emp=>{
-    const k = 'lt_'+emp.Id;
-    const logs = ltLogs[k]||[];
-    const last = logs.length ? logs[logs.length-1] : null;
-    const reason = emp.Reason||'';
-    const rb = reason.toLowerCase().includes('maternity')?'b-blue':reason.toLowerCase().includes('sick')?'b-amber':'b-gray';
-    const hist = logs.map(l=>`<div class="log-entry">
-      <span class="log-date">${l.date}</span>
-      <span style="color:#1a1a18"><strong>${l.action}</strong>${l.notes?' — '+l.notes:''}</span>
-    </div>`).join('');
-    return`<div style="border-bottom:1px solid #f0efe9">
+  document.getElementById('lt-body').innerHTML=ltData.map(emp=>{
+    const k='lt_'+emp.Id;
+    const logs=ltLogs[k]||[];
+    const last=logs.length?logs[logs.length-1]:null;
+    const reason=emp.Reason||'';
+    const rb=reason.toLowerCase().includes('maternity')?'b-blue':reason.toLowerCase().includes('sick')?'b-amber':'b-gray';
+    const hist=logs.map(l=>`<div class="log-entry"><span class="log-date">${l.date}</span><span style="color:#1a202c"><strong>${l.action}</strong>${l.notes?' — '+l.notes:''}</span></div>`).join('');
+    return`<div style="border-bottom:1px solid #f7fafc">
       <table><tbody><tr>
         <td style="width:32%;vertical-align:middle"><span class="name">${emp.Title}</span></td>
         <td style="width:24%;vertical-align:middle"><span class="badge ${rb}">${reason||'—'}</span></td>
-        <td style="width:20%;font-size:11px;color:#9e9c93;vertical-align:middle">${emp.On_x0020_hold_x0020_since||''}</td>
+        <td style="width:20%;font-size:11px;color:#718096;vertical-align:middle">${emp.On_x0020_hold_x0020_since||''}</td>
         <td style="width:24%;vertical-align:middle">
-          ${last?`<div style="font-size:11px;color:#6b6960;margin-bottom:4px">${last.action.split(' ')[0]} · ${last.date}</div>`:''}
+          ${last?`<div style="font-size:11px;color:#718096;margin-bottom:4px">${last.action.split(' ')[0]} · ${last.date}</div>`:''}
           <button class="btn" onclick="openLTModal('${emp.Title.replace(/'/g,"\\'")}','${k}')">Log action</button>
         </td>
       </tr></tbody></table>
-      ${logs.length?`<div class="log-history">
-        <div style="font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#9e9c93;margin-bottom:6px">History</div>
-        ${hist}</div>`:''}
+      ${logs.length?`<div class="log-history"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#718096;margin-bottom:6px">History</div>${hist}</div>`:''}
     </div>`;
   }).join('');
 }
 
-// ── Be Supported ──────────────────────────────────────────────────
 function renderBS(){
   if(!bsData.length){
-    document.getElementById('bs-low').innerHTML='<div style="padding:16px;text-align:center;color:#9e9c93;font-size:12px">No Be Supported data for this branch.</div>';
-    document.getElementById('bs-down').innerHTML='<div style="padding:12px 14px;font-size:12px;color:#9e9c93">No data</div>';
-    document.getElementById('bs-up').innerHTML='<div style="padding:12px 14px;font-size:12px;color:#9e9c93">No data</div>';
+    ['bs-low','bs-down','bs-up'].forEach(id=>document.getElementById(id).innerHTML='<div style="padding:14px;text-align:center;color:#718096;font-size:12px">No data for this branch.</div>');
     return;
   }
+  const latest=bsData.filter(r=>r.Latest_x0020_Score);
+  document.getElementById('bs-5').textContent=latest.filter(r=>r.Latest_x0020_Score==5).length;
+  document.getElementById('bs-4').textContent=latest.filter(r=>r.Latest_x0020_Score==4).length;
+  document.getElementById('bs-3').textContent=latest.filter(r=>r.Latest_x0020_Score==3).length;
+  document.getElementById('bs-12').textContent=latest.filter(r=>r.Latest_x0020_Score<=2).length;
+  document.getElementById('m-bs').textContent=latest.length?(latest.reduce((s,r)=>s+r.Latest_x0020_Score,0)/latest.length).toFixed(1):'—';
 
-  const latest = bsData.filter(r=>r.Latest_x0020_Score);
-  const count5  = latest.filter(r=>r.Latest_x0020_Score==5).length;
-  const count4  = latest.filter(r=>r.Latest_x0020_Score==4).length;
-  const count3  = latest.filter(r=>r.Latest_x0020_Score==3).length;
-  const count12 = latest.filter(r=>r.Latest_x0020_Score<=2).length;
-  const avg     = latest.length ? (latest.reduce((s,r)=>s+r.Latest_x0020_Score,0)/latest.length).toFixed(1) : '—';
+  const low=bsData.filter(r=>r.Latest_x0020_Score<=3).sort((a,b)=>a.Latest_x0020_Score-b.Latest_x0020_Score);
+  document.getElementById('bs-low').innerHTML=low.length?low.map(r=>{
+    const bg=r.Latest_x0020_Score<=2?'#c0392b':'#d35400';
+    return`<div class="c-row"><div class="pip" style="background:${bg}">${r.Latest_x0020_Score}</div><div><div style="font-size:13px;font-weight:500">${r.Title}</div>${r.Comment?`<div class="comment">"${r.Comment}"</div>`:''}</div></div>`;
+  }).join(''):'<div style="padding:14px;text-align:center;color:#718096;font-size:12px">No scores of 3 or below.</div>';
 
-  document.getElementById('bs-5').textContent  = count5;
-  document.getElementById('bs-4').textContent  = count4;
-  document.getElementById('bs-3').textContent  = count3;
-  document.getElementById('bs-12').textContent = count12;
-  document.getElementById('m-bs').textContent  = avg;
+  const down=bsData.filter(r=>r.Change<0).sort((a,b)=>a.Change-b.Change);
+  document.getElementById('bs-down').innerHTML=down.length?down.map(r=>`<div class="change-row"><span class="name">${r.Title}</span><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;color:#718096">${r.First_x0020_Score} → ${r.Latest_x0020_Score}</span><span class="change-down">▼ ${r.Change}</span></div></div>`).join(''):'<div style="padding:12px 16px;font-size:12px;color:#718096">No decreases this period.</div>';
 
-  const low = bsData.filter(r=>r.Latest_x0020_Score<=3).sort((a,b)=>a.Latest_x0020_Score-b.Latest_x0020_Score);
-  document.getElementById('bs-low').innerHTML = low.length ? low.map(r=>{
-    const bg = r.Latest_x0020_Score<=2?'#c0392b':'#d35400';
-    return`<div class="c-row">
-      <div class="pip" style="background:${bg}">${r.Latest_x0020_Score}</div>
-      <div>
-        <div style="font-size:13px;font-weight:500">${r.Title}</div>
-        ${r.Comment?`<div class="comment">"${r.Comment}"</div>`:''}
-      </div>
-    </div>`;
-  }).join('') : '<div style="padding:14px;text-align:center;color:#9e9c93;font-size:12px">No scores of 3 or below.</div>';
-
-  const down = bsData.filter(r=>r.Change<0).sort((a,b)=>a.Change-b.Change);
-  document.getElementById('bs-down').innerHTML = down.length ? down.map(r=>`
-    <div class="change-row">
-      <span class="name">${r.Title}</span>
-      <div style="display:flex;align-items:center;gap:8px">
-        <span style="font-size:11px;color:#9e9c93">${r.First_x0020_Score} → ${r.Latest_x0020_Score}</span>
-        <span class="change-down">▼ ${r.Change}</span>
-      </div>
-    </div>`).join('') : '<div style="padding:12px 14px;font-size:12px;color:#9e9c93">No decreases this period.</div>';
-
-  const up = bsData.filter(r=>r.Change>0).sort((a,b)=>b.Change-a.Change);
-  document.getElementById('bs-up').innerHTML = up.length ? up.map(r=>`
-    <div class="change-row">
-      <span class="name">${r.Title}</span>
-      <div style="display:flex;align-items:center;gap:8px">
-        <span style="font-size:11px;color:#9e9c93">${r.First_x0020_Score} → ${r.Latest_x0020_Score}</span>
-        <span class="change-up">▲ +${r.Change}</span>
-      </div>
-    </div>`).join('') : '<div style="padding:12px 14px;font-size:12px;color:#9e9c93">No increases this period.</div>';
+  const up=bsData.filter(r=>r.Change>0).sort((a,b)=>b.Change-a.Change);
+  document.getElementById('bs-up').innerHTML=up.length?up.map(r=>`<div class="change-row"><span class="name">${r.Title}</span><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11px;color:#718096">${r.First_x0020_Score} → ${r.Latest_x0020_Score}</span><span class="change-up">▲ +${r.Change}</span></div></div>`).join(''):'<div style="padding:12px 16px;font-size:12px;color:#718096">No increases this period.</div>';
 }
 
-// ── Modals ────────────────────────────────────────────────────────
-function openAbsModal(name, id){
-  currentAbsID = id;
-  document.getElementById('abs-modal-sub').textContent = name + ' · ' + BRANCH;
-  document.getElementById('abs-notes').value = '';
+function openAbsModal(name,id){
+  currentAbsID=id;
+  document.getElementById('abs-modal-sub').textContent=name+' · '+BRANCH;
+  document.getElementById('abs-notes').value='';
   document.getElementById('abs-modal').classList.add('open');
 }
-function openLTModal(name, key){
-  currentLTKey = key;
-  document.getElementById('lt-modal-sub').textContent = name;
-  document.getElementById('lt-notes').value = '';
+function openLTModal(name,key){
+  currentLTKey=key;
+  document.getElementById('lt-modal-sub').textContent=name;
+  document.getElementById('lt-notes').value='';
   document.getElementById('lt-modal').classList.add('open');
 }
 function closeModals(){ document.querySelectorAll('.overlay').forEach(o=>o.classList.remove('open')); }
 
 async function saveAbs(){
-  const outcome = document.getElementById('abs-outcome').value;
-  const date    = document.getElementById('abs-date').value;
-  const notes   = document.getElementById('abs-notes').value;
-  await spUpdate(ABS_LIST, currentAbsID, {
-    '__metadata':{'type':'SP.Data.Short_x0020_Term_x0020_AbsenceListItem'},
-    'Meeting_x0020_held': true, 'Outcome': outcome,
-    'Outcome_x0020_date': date, 'Notes': notes
-  });
-  const item = absData.find(r=>r.Id===currentAbsID);
-  if(item){ item.Meeting_x0020_held=true; item.Outcome=outcome; }
-  closeModals(); renderAbs();
+  const outcome=document.getElementById('abs-outcome').value;
+  const date=document.getElementById('abs-date').value;
+  const notes=document.getElementById('abs-notes').value;
+  await spUpdate(ABS_LIST,currentAbsID,{'__metadata':{'type':'SP.Data.Short_x0020_Term_x0020_AbsenceListItem'},'Meeting_x0020_held':true,'Outcome':outcome,'Outcome_x0020_date':date,'Notes':notes});
+  const item=absData.find(r=>r.Id===currentAbsID);
+  if(item){item.Meeting_x0020_held=true;item.Outcome=outcome;}
+  closeModals();renderAbs();
 }
 
 function saveLT(){
-  if(!ltLogs[currentLTKey]) ltLogs[currentLTKey]=[];
-  ltLogs[currentLTKey].push({
-    action: document.getElementById('lt-action').value,
-    date:   document.getElementById('lt-date').value,
-    notes:  document.getElementById('lt-notes').value
-  });
-  persist(); closeModals(); renderLT();
+  if(!ltLogs[currentLTKey])ltLogs[currentLTKey]=[];
+  ltLogs[currentLTKey].push({action:document.getElementById('lt-action').value,date:document.getElementById('lt-date').value,notes:document.getElementById('lt-notes').value});
+  persist();closeModals();renderLT();
 }
 
-// ── Init ──────────────────────────────────────────────────────────
 async function init(){
-  const filter = BRANCH ? `Branch eq '${BRANCH}'` : null;
-  const [spAbs, spLT, spBS] = await Promise.all([
-    spFetch(ABS_LIST, filter, 'Id,Title,Absences,Period,Meeting_x0020_held,Outcome,Outcome_x0020_date,Notes'),
-    spFetch(LT_LIST,  filter, 'Id,Title,Reason,On_x0020_hold_x0020_since,Notes'),
-    spFetch(BS_LIST,  filter, 'Id,Title,Latest_x0020_Score,First_x0020_Score,Change,Comment'),
+  const filter=BRANCH?`Branch eq '${BRANCH}'`:null;
+  const [spAbs,spLT,spBS]=await Promise.all([
+    spFetch(ABS_LIST,filter,'Id,Title,Absences,Period,Meeting_x0020_held,Outcome,Outcome_x0020_date,Notes'),
+    spFetch(LT_LIST, filter,'Id,Title,Reason,On_x0020_hold_x0020_since,Notes'),
+    spFetch(BS_LIST, filter,'Id,Title,Latest_x0020_Score,First_x0020_Score,Change,Comment'),
   ]);
-  absData = (spAbs||[]).sort((a,b)=>b.Absences-a.Absences);
-  ltData  = spLT  || [];
-  bsData  = spBS  || [];
-  renderAbs(); renderLT(); renderBS();
+  absData=(spAbs||[]).sort((a,b)=>b.Absences-a.Absences);
+  ltData=spLT||[];
+  bsData=spBS||[];
+  renderAbs();renderLT();renderBS();
 }
 
 init();
